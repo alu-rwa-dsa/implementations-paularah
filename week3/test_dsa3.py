@@ -48,15 +48,5 @@ class TestDsa(unittest.TestCase):
 
     def test_question_four(self):
         a_arr = AssArray('name', 'paul')
-        self.assertRaises(a_arr.as_array, ('name', 'paul'))
-
-
-
-
-
-
-         
-
-
-
-
+        self.assertEqual(a_arr.as_array, [('name', 'paul')])
+        self.assertEqual(a_arr.lookup('name'), 'paul')

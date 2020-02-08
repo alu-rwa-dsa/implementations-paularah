@@ -2,7 +2,7 @@
 A Static Array Abstract Data Type Implementation
 Implementations Decsions:
 This mimics the implementation of python's list except that they are static
-The ize of the array is initailised at instanciation
+The size of the array is initailised at instanciation
 This ADT uses zero based indexing
 """
 
@@ -13,43 +13,49 @@ class Array():
          The class constructor taking a finite value for the size while the initial input the list
          list are theoritically infinite as long they are less than the specified size.
         """
+        self.initial_values = initial_value
+        self.size = size
+        # An empty list that would hold our array elements after validation
+        self.elem = []
+        self.values = []
+        self.type_check()
+        self.validate()
+
+    def type_check(self):
 
         # Type checking for size input to be strictly and integer
-        if type(size) != int:
+        if type(self.size) != int:
             raise ValueError
-        self.size = size
 
         # Type checking to ensure that initial instantiation elements are all integers
         # N/B: The resulting values from the variable arguments in the constructor is a tuple
-        try:
-            for i in initial_value:
-                if type(i) != int:
-                    raise ValueError
-        except ValueError:
-            print('Array elements must be integers!')
+        for i in self.initial_values:
+            if type(i) != int:
+                raise ValueError
+        pass
 
-        # An empty list that would hold our array elements after validation
-        self.elem = []
+    def validate(self):
 
         # adding our initial values straight to a elem list if the size and length are all
         # specified input corresponds
-        if len(initial_value) == size:
-            for i in initial_value:
+        if len(self.initial_values) == self.size:
+            for i in self.initial_values:
                 self.elem.append(i)
 
         # Initialising the other empty spaces in memory to None if the length of the specified values
         # is less than the size
-        elif len(initial_value) < size:
+        elif len(self.initial_values) < self.size:
             count = 0
-            for i in range(size):
-                if count < len(initial_value):
-                    self.elem.append(initial_value[i])
+            for i in range(self.size):
+                if count < len(self.initial_values):
+                    self.elem.append(self.initial_values[i])
                 else:
                     self.elem.append(None)
                 count += 1
             self.values = self.elem[0:self.arr_len()]
-        # Raising a values if the length of the specified elements at instantiation is more
-        # than the size
+
+            # Raising a values if the length of the specified elements at instantiation is more
+            # than the size
         else:
             raise ValueError
 
@@ -86,3 +92,5 @@ class Array():
     def __str__(self):
         return str(self.values)
 
+f = Array(9, 4, 6)
+print(f.elem)

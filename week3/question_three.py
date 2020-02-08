@@ -12,7 +12,6 @@ def reverse(array):
     final = []
     count = array.arr_len()
     count -= 1
-    print(count)
     while count >= 0:
         x = array.arr_get(count)
         final.append(x)

@@ -1,5 +1,6 @@
 # Importing the predefined Array class
 from question_one import Array
+
 """
 IMPLEMENTATION OF THE DYNAMIC ARRAY ABSTRACT DATA TYPE:
 This inherits the methods and properties of the Static array 
@@ -8,6 +9,7 @@ Implementation Decisions:
 if the length of the specified elements is greater than the size  
 """
 
+
 # Dynamic array inherits from Static Array class
 class DynamicArray(Array):
 
@@ -15,14 +17,16 @@ class DynamicArray(Array):
     def __init__(self, *initial_values):
         # Initialising the parent constructor
         super().__init__(*initial_values)
-        self.elem = []
-        Array.size = 10
-        # Continously increasing the size until the size accomodates the element length
-        while len(initial_values) > Array.size:
-            Array.size *= 2
-        for i in initial_values:
-            self.elem.append(i)
+        self.size = 10
+        self.initial_values = initial_values
+        self.type_check()
+        self.create_arr()
+        self.validate()
 
+    def create_arr(self):
+        # Continuously increasing the size until the size accommodates the element length
+        while len(self.initial_values) > self.size:
+            self.size *= 2
     # A method for adding a value to the end of an array
     def arr_add(self, elem):
         index = self.arr_len()
@@ -34,3 +38,5 @@ class DynamicArray(Array):
         self.elem = self.elem[0:self.arr_len()]
 
 
+f = DynamicArray(9, 4, 6)
+print(f.elem)
