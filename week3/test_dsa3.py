@@ -5,25 +5,33 @@ from question_three import *
 from question_four import AssArray
 from question_four import AssArray
 
+
 class TestDsa(unittest.TestCase):
 
     def test_question_one(self):
+        # Creating an array object for testing
         arr = Array(4, 3, 4, 7)
-        self.assertEqual(arr.arr_len(), 3)
-        self.assertEqual(arr.values, [3, 4, 7])
-        self.assertEqual(arr.elem, [3, 4, 7, None])
+        # testing the length function
+        self.assertEqual(arr.arr_len(), 4)
+        # testing the values method
+        self.assertEqual(arr.values, [4, 3, 4, 7])
+        # testing that our places within an array are initialised to None
+        self.assertEqual(arr.elem, [4, 3, 4, 7, None, None, None, None, None, None])
+        # Testing the set method
         arr.arr_set(2, 1)
-        self.assertEqual(arr.values, [3, 4, 1])
-        self.assertEqual(arr.elem, [3, 4, 1, None])
-        self.assertEqual(arr.arr_get(2), 1)
-        # testing a couple of edge cases
+        self.assertEqual(arr.values, [4, 3, 1, 7])
+        self.assertEqual(arr.elem, [4, 3, 1, 7, None, None, None, None, None, None])
+        # testing the get method
+        self.assertEqual(arr.arr_get(1), 3)
+        # testing a couple of edge cases and variability
         arr = Array(4)
+        self.assertEqual(arr.arr_len(), 1)
+        self.assertEqual(arr.values, [4])
+        self.assertEqual(arr.elem, [4, None, None, None, None, None, None, None, None, None])
+        arr = Array()
         self.assertEqual(arr.arr_len(), 0)
         self.assertEqual(arr.values, [])
-        self.assertEqual(arr.elem, [None, None, None, None])
-        arr = Array(0)
-        self.assertEqual(arr.arr_len(), 0)
-        self.assertEqual(arr.elem, [])
+        self.assertEqual(arr.elem, [None, None, None, None, None, None, None, None, None, None])
         # # testing for Out of bound IndexError exceptions
         with self.assertRaises(IndexError):
             arr.arr_set(1, 1)
@@ -36,17 +44,55 @@ class TestDsa(unittest.TestCase):
             arr = Array(3, 4, 5, '6', 7)
 
     def test_question_two(self):
-        arr = DynamicArray(3, 1, 5)
-        arr.arr_add(9)
-        self.assertEqual(arr.values, [3, 1, 5, 9])
+        # To test that our new array object is actually dynamic:
+        # We test with an input size less than our predefined size of 10
+        arr = DynamicArray(3, 5, 6, 7)
+        self.assertEqual(arr.size, 10)
+        # We also test with an input size greater than our predefined size and if the size size of our array has doubled
+        arr = DynamicArray(9, 4, 6, 3, 4, 5, 1, 4, 6, 8, 4, 8, 9, 0, 4, 7)
+        self.assertEqual(arr.size, 20)
+        # Testing the delete method
         arr.arr_del()
-        self.assertEqual(arr.values(), [3, 1, 5])
+        self.assertEqual(arr.values, [9, 4, 6, 3, 4, 5, 1, 4, 6, 8, 4, 8, 9, 0, 4])
 
-    # def test_question_three(self):
-    #     arr = DynamicArray(3, 9, 1, 4)
-    #     self.assertEqual(contains(arr, 4), True)
+    def test_question_three(self):
+        arr = DynamicArray(3, 9, 1, 4)
+        self.assertEqual(arr.values, [3, 9, 1, 4])
+        # testing the contains function
+        self.assertEqual(contains(arr, 1), True)
+        # testing the reverse function
+        self.assertEqual(reverse(arr), [4, 1, 9, 3])
+        # testing the insert function
+        self.assertEqual(insert(arr, 0, 1), [4, 0, 1, 9, 3])
 
     def test_question_four(self):
         a_arr = AssArray('name', 'paul')
+        # testing the instance
         self.assertEqual(a_arr.as_array, [('name', 'paul')])
+        # testing the insert method
+        a_arr.insert('age', 230)
+        self.assertEqual(a_arr.as_array, [('name', 'paul'), ('age', 230)])
+        #  testing the lookup method
         self.assertEqual(a_arr.lookup('name'), 'paul')
+        self.assertEqual(a_arr.lookup('age'), 230)
+        # testing the remove method
+        a_arr.remove('name')
+        self.assertEqual(a_arr.as_array, [('age', 230)])
+        # testing the modify method
+        a_arr.modify('age', 23)
+        self.assertEqual(a_arr.as_array, [('age', 23)])
+        a_arr.insert('Nationality', 'Nigerian')
+        # testing the lookup method
+        self.assertEqual(a_arr.lookup('Nationality'), 'Nigerian')
+        # testing exceptions for the different methods
+        with self.assertRaises(KeyError):
+            a_arr.lookup('School')
+        with self.assertRaises(KeyError):
+            a_arr.remove('car')
+        with self.assertRaises(KeyError):
+            a_arr.modify('blood-group', '+O')
+
+
+
+
+

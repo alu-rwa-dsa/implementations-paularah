@@ -1,20 +1,20 @@
 """
 A Static Array Abstract Data Type Implementation
-Implementations Decsions:
+Implementations Decisions:
 This mimics the implementation of python's list except that they are static
-The size of the array is initailised at instanciation
+The size of the array is predefined to be of 10
 This ADT uses zero based indexing
 """
 
 
-class Array():
-    def __init__(self, size, *initial_value):
+class Array:
+    def __init__(self,  *initial_value):
         """
          The class constructor taking a finite value for the size while the initial input the list
          list are theoritically infinite as long they are less than the specified size.
         """
         self.initial_values = initial_value
-        self.size = size
+        self.size = 10
         # An empty list that would hold our array elements after validation
         self.elem = []
         self.values = []
@@ -22,7 +22,6 @@ class Array():
         self.validate()
 
     def type_check(self):
-
         # Type checking for size input to be strictly and integer
         if type(self.size) != int:
             raise ValueError
@@ -35,7 +34,6 @@ class Array():
         pass
 
     def validate(self):
-
         # adding our initial values straight to a elem list if the size and length are all
         # specified input corresponds
         if len(self.initial_values) == self.size:
@@ -89,8 +87,7 @@ class Array():
             # Raises an in error if the value is greater the length of the elements
             raise IndexError
 
+    # Overriding the string magic method to allow us print out our array object.
     def __str__(self):
         return str(self.values)
 
-f = Array(9, 4, 6)
-print(f.elem)
