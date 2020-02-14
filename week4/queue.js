@@ -3,7 +3,7 @@ Implementation of the queue abstract data type. This is also achived leveraging
 on the primary methods of linked list. 
  */
 
-//  The node class 
+//  The node class
  class Node{
     //  has val and reference to the next as it attributes
      constructor(val){
@@ -12,7 +12,7 @@ on the primary methods of linked list.
      }
  }
 
-//  
+//  Queue class
  class Queue{
     //  The queue ADT class with first, last and length as it attributes
      constructor(){
@@ -20,6 +20,7 @@ on the primary methods of linked list.
          this.last = null;
          this.size = 0;
      }
+
     //  The enqueue method
      enque(val){
         //  creating a new node with refrence to the value to be enqueued
@@ -35,8 +36,9 @@ on the primary methods of linked list.
          this.last = newNode
         //  Incrementing the length
          this.size ++;
-
      }
+
+    //  dequeue method
      dequeue(){
         //  Handling the egde case of an empty queue
          if (!this.first){
@@ -55,6 +57,7 @@ on the primary methods of linked list.
          return value;
      }
 
+    //  peek method
      peek(){
         //  Handling the edge case of an empty queue
          if(!this.first){
@@ -66,6 +69,8 @@ on the primary methods of linked list.
  }
 
 
+ 
+//  unit test
  const test = () => {
      // requiring the node in-built module assertaion testing for unit
     // test

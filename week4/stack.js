@@ -5,7 +5,7 @@
  methods can be achieved by leveraging on the head node.
  */
 
-//  A ndoe class 
+//  A ndoe Object 
  class Node{
      constructor(val){
         //  the node class has value and the next as it attributes
@@ -14,6 +14,8 @@
      }
  }
 
+
+//Stack Object  
  class Stack{
      constructor(){
         //  equivalent to the head of a linked list
@@ -23,6 +25,7 @@
         
      }
 
+    //  push method
      push(val){
         //  make a new node that references the value
          let newNode = new Node(val);
@@ -34,8 +37,8 @@
          return ++this.size;
      }
      
+    //  pop mwthod
      pop(){
-
         // dealing with the egde case of an empty stack
         // return null ? !this.first:{}
         if (!this.first){
@@ -53,18 +56,21 @@
         // and return the value of the previous first node
         return value;
      }
+
+    //  peek method
      peek(){
          // dealing with the egde case of an empty stack
         if (!this.first){
             return null;
         } 
-        else{
-            return this.first.val;
-        }
+        
+        return this.first.val;
+        
      }
-
  }
 
+
+//  Unit tests
 const test = () =>{
     const assert = require('assert')
     // requiring the node in-built module assertaion testing for unit
