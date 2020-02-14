@@ -22,9 +22,6 @@ class Array:
         self.validate()
 
     def type_check(self):
-        # Type checking for size input to be strictly and integer
-        if type(self.size) != int:
-            raise ValueError
 
         # Type checking to ensure that initial instantiation elements are all integers
         # N/B: The resulting values from the variable arguments in the constructor is a tuple
