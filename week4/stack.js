@@ -1,9 +1,9 @@
 /*
  The stack abstarct data type implementation using linked list.
  This is achieved by using the popFirst and prepend primary methods of 
- a linked list
+ a linked list. Having a reference to the tail is this case is redundant, since all primary
+ methods can be achieved by leveraging on the head node.
  */
-const assert = require('assert')
 
 //  A ndoe class 
  class Node{
@@ -18,10 +18,8 @@ const assert = require('assert')
      constructor(){
         //  equivalent to the head of a linked list
         this.first = null;
-        //  equivalent to the tail of a linked list
-        this.last = null;
         // the length of the stack
-        this.length = 0;
+        this.size = 0;
         
      }
 
@@ -33,7 +31,7 @@ const assert = require('assert')
         //  Make the new node the first node
          this.first = newNode;
         //  Increement and return the length 
-         return ++this.length;
+         return ++this.size;
      }
      
      pop(){
@@ -51,7 +49,7 @@ const assert = require('assert')
         // make the second node the first node
         this.first = newFirst;
         // decrement the length 
-        this.length--;
+        this.size--;
         // and return the value of the previous first node
         return value;
      }
@@ -67,14 +65,41 @@ const assert = require('assert')
 
  }
 
+const test = () =>{
+    const assert = require('assert')
+    // requiring the node in-built module assertaion testing for unit
+    // test
+    const myStack = new Stack();
+    myStack.push(4);
+    let actual = myStack.first.val; 
+    assert.deepStrictEqual(actual, 4);
+    // testing LIFO
+    myStack.push(2);
+    actual = myStack.first.val;
+    assert.deepStrictEqual(actual, 2);
+    myStack.push(0);
+    actual = myStack.first.val
+    assert.deepStrictEqual(actual, 0);
+    actual = myStack.first.next.next.val
+    assert.deepStrictEqual(actual, 4);
+    // testing pop method
+    actual = myStack.pop();
+    assert.deepStrictEqual(actual, 0);
+    // testing peek method
+    actual = myStack.peek();
+    assert.deepStrictEqual(actual, 2);
+    // testing a edge case
+    myStack.pop();
+    myStack.pop();
+    actual = myStack.peek();
+    assert.deepStrictEqual(actual, null);
+    actual = myStack.pop();
+    assert.deepStrictEqual(actual, null);
 
-let myStack = new Stack();
-myStack.push(4);
-let actual = myStack.first.val; 
-assert.deepStrictEqual(actual, 4);
-actual = myStack.first;
-console.log(myStack);
-// console.log(actual);
-// assert.deepStrictEqual(actual.prototype, { val: 4, next: null })
+}
+
+test();
+
+
 
 

@@ -10,7 +10,7 @@ The time time complexity for the contains function is O(n) while the space compl
 
 The time and space complexity for the reverse function is both O(n). Since I am traversing through the array and I am not reversing in place.
 
-The time and space complexity of the insert function is both O(1)
+The time and space complexity of the insert function is both O(n)
 
 
 Inserting in an associative array is O(n)
