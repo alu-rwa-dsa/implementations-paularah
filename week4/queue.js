@@ -1,6 +1,6 @@
 /*
 Implementation of the queue abstract data type. This is also achived leveraging
-on the primary methods of linked list. 
+on the primary methods of linked list.
  */
 
 //  The node class
@@ -51,7 +51,7 @@ on the primary methods of linked list.
         //  severing the link between the first node and other node
         // and making the newFirst node the first node.
          this.first = newFirst;
-        // Decrementing the length 
+        // Decrementing the length
          this.size --;
         //  returning the value of the previous frist first node
          return value;
@@ -69,13 +69,13 @@ on the primary methods of linked list.
  }
 
 
- 
+
 //  unit test
  const test = () => {
      // requiring the node in-built module assertaion testing for unit
     // test
     const assert = require('assert');
-    // new objet of our queue 
+    // new objet of our queue
     myQueue = new Queue();
     let actual = myQueue.first();
     // testing te egde case of an empty node
@@ -94,7 +94,7 @@ on the primary methods of linked list.
     actual = myQueue.dequeue();
     assert.deepStrictEqual(actual, 1)
     assert.deepStrictEqual(myQueue.peek(), 1)
-    
+
  }
 
  test();

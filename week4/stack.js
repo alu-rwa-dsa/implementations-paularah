@@ -1,11 +1,11 @@
 /*
  The stack abstarct data type implementation using linked list.
- This is achieved by using the popFirst and prepend primary methods of 
+ This is achieved by using the popFirst and prepend primary methods of
  a linked list. Having a reference to the tail is this case is redundant, since all primary
  methods can be achieved by leveraging on the head node.
  */
 
-//  A ndoe Object 
+//  A ndoe Class
  class Node{
      constructor(val){
         //  the node class has value and the next as it attributes
@@ -15,14 +15,14 @@
  }
 
 
-//Stack Object  
+//Stack Class
  class Stack{
      constructor(){
         //  equivalent to the head of a linked list
         this.first = null;
         // the length of the stack
         this.size = 0;
-        
+
      }
 
     //  push method
@@ -33,11 +33,11 @@
          newNode.next = this.first
         //  Make the new node the first node
          this.first = newNode;
-        //  Increement and return the length 
+        //  Increement and return the length
          return ++this.size;
      }
-     
-    //  pop mwthod
+
+    //  pop method
      pop(){
         // dealing with the egde case of an empty stack
         // return null ? !this.first:{}
@@ -51,7 +51,7 @@
         let value = this.first.val;
         // make the second node the first node
         this.first = newFirst;
-        // decrement the length 
+        // decrement the length
         this.size--;
         // and return the value of the previous first node
         return value;
@@ -62,10 +62,10 @@
          // dealing with the egde case of an empty stack
         if (!this.first){
             return null;
-        } 
-        
+        }
+
         return this.first.val;
-        
+
      }
  }
 
@@ -77,7 +77,7 @@ const test = () =>{
     // test
     const myStack = new Stack();
     myStack.push(4);
-    let actual = myStack.first.val; 
+    let actual = myStack.first.val;
     assert.deepStrictEqual(actual, 4);
     // testing LIFO
     myStack.push(2);
@@ -101,11 +101,6 @@ const test = () =>{
     assert.deepStrictEqual(actual, null);
     actual = myStack.pop();
     assert.deepStrictEqual(actual, null);
-
 }
 
 test();
-
-
-
-
