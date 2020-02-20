@@ -89,7 +89,6 @@ const test = ()=>{
     assert.deepStrictEqual(list.popFirst, 1);
     // testing the pop last method
     assert.deepStrictEqual(list.popLast, 6)
-    
 }
 
 test();
