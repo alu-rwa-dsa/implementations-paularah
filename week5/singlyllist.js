@@ -1,5 +1,5 @@
 // Node class with reference to the next node and the value 
-class Node{
+ class Node{
     constructor(val){
         this.val = val;
         this.next = null;
@@ -116,8 +116,8 @@ class SinglyLinkedList{
         current.next = newNode;
         newNode.next = nextNode;
     }
+    
 }
-
 
 
 // unit test 
@@ -139,4 +139,5 @@ const test = () =>{
     assert.deepStrictEqual(list.tail.val, 1);
 }
 
-test();
+
+module.export = {SinglyLinkedList, Node};
