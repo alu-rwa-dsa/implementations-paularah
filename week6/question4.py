@@ -1,25 +1,28 @@
-import unittest, from unittest import TestCase
+import unittest
+from unittest import TestCase
+
 def det(matrice):
-    n=len(matrice)
-    if n>2:
-        i=1
-        t=0
+
+    dep = len(matrice)
+    if dep > 2:
+        i = 1
+        t = 0
         sumdet = 0
-        while t<=n-1:
-            d={}
-            t1=1
-            while t1<=n-1:
-                m=0
-                d[t1]=[]
-                while m<=n-1:
-                    if m==t:
-                        u=0
+        while t <= dep-1:
+            hold={}
+            vx = 1
+            while vx <= dep-1:
+                m = 0
+                hold[vx] = []
+                while m <= dep-1:
+                    if m == t:
+                        u = 0
                     else:
-                        d[t1].append(matrice[t1][m])
-                    m+=1
-                t1+=1
-            l1=[d[x] for x in d]
-            sumdet = sumdet + i * (matrice [ 0][ t]) * (det(l1))
+                        hold[vx].append(matrice[vx][m])
+                    m += 1
+                vx += 1
+            ech=[hold[x] for x in hold]
+            sumdet = sumdet + i * (matrice [ 0][ t]) * (det(ech))
             i = i*(-1)
             t +=1
         return sumdet
