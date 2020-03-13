@@ -13,7 +13,7 @@ function binarySearch(arr, val, left=0, right=(arr.length-1)) {
         return binarySearch(arr, val, middle+1, right)
       case arr[middle] > val:
         return binarySearch(arr, val, left, middle)
-    }
+    }T
   }
 
 
