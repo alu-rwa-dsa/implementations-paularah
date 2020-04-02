@@ -19,3 +19,8 @@ const test = () =>{
 }
 
 test();
+
+{
+    pepper();
+    afangSoup();
+}
