@@ -1,6 +1,10 @@
+"use strict";
+
 /**
  * Iplementation of the Binary Search Tree Data Structure 
  */
+
+ 
 
 /*
  * @params Integer
@@ -72,70 +76,9 @@ class BinarySearchTree{
         }
         return false;
     }
-
-    breadthFirstSearch(){
-        let queue = [],
-            data = [],
-            node = this.root;
-        queue.push(node);
-        while(queue.length){
-            node = queue.shift();
-            data.push(node);
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
-        }
-        return data;
-    }
-
-    /**  
-     * leveraging on the helper method recursion
-     * 
-     */
-
-    DFS_PreOrder(){
-        let data  = [],
-            start = this.root;
-        function transverse(node){
-            data.push(node.value)
-            if (node.left) transverse(node.left);
-            if (node.right) transverse(node.right);
-
-        }
-        transverse(start);
-        return data;
-    }
-
-    DFS_PostOrder(){
-        let data = [],
-            start = this.root;
-
-        function transverse(node){
-            if (node.left) transverse(node.left);
-            if (node.right) transverse(node.right);
-            data.push(node.value);
-        } 
-        transverse(start)
-        return data;
-    }
-
-    DFS_InOder(){
-        let data = [],
-            start = this.root;
-
-        function transverse(node){
-            if (node.left) transverse(node.left);
-            data.push(node.value);
-            if (node.right) transverse(node.right);
-        } 
-        transverse(start)
-        return data;
-    }
 }
 
-let bst = new BinarySearchTree;
-bst.insert(2);
-bst.insert(5);
-bst.insert(7);
-bst.insert(1);
-bst.insert(4);
-console.log(bst.DFS_InOder());
+module.exports = {
+    Node: Node,
+    BinarySearchTree: BinarySearchTree
+}
