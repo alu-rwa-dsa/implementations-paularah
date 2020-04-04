@@ -1,14 +1,10 @@
 "use strict";
 
 /**
- * Iplementation of the Binary Search Tree Data Structure 
+ * Implementation of the Binary Search Tree Data Structure 
  */
 
  
-
-/*
- * @params Integer
- */
 class Node{
     constructor(val){
         this.value = val;
@@ -22,11 +18,12 @@ class BinarySearchTree{
         this.root = null;
     }
 
-    /*
-    * @params Interger 
-    * @returns {BST object}
-    */
 
+    /**
+     * creates a new node with the value and inserts it into a BST
+     * @param {Integer} val
+     * @returns {Object}  
+     */
     insert(val){
         let newNode = new Node(val);
         if(this.root === null) {
@@ -59,10 +56,14 @@ class BinarySearchTree{
          
     }
 
+    /**
+     * Checks in a value is presnt in te node of a binary search tree
+     * @param {Interger} val
+     * @returns {Boolean} 
+     */
     search(val){
         if (this.root === null) return undefined;
         let start = this.root;
-        let found = false;
         while (start){
             if (val === start.value){
                 return true
@@ -75,6 +76,18 @@ class BinarySearchTree{
             }
         }
         return false;
+    }
+
+    /**
+     * takes in a an array and returns a binary search tree
+     * @param {Array} arr
+     * @return {Object} BST object 
+     */
+    create(arr){
+        for (let i of arr){
+            this.insert(i);
+        }
+        return this;
     }
 }
 

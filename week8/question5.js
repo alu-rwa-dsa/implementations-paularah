@@ -7,9 +7,7 @@ let assert = require('assert');
 function creatBST(arr){
     let bst = new BinarySearchTree,
         values;
-    for(let i of arr){
-        bst.insert(i)
-    }
+    bst.create(arr);
     values = bst.DFS_InOder();
     return values
 }
