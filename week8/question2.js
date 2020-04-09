@@ -89,6 +89,7 @@ class BinarySearchTree{
         }
         return this;
     }
+
 }
 
 module.exports = {
