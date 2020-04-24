@@ -1,4 +1,4 @@
-let file = require('../week5/singlyllist');
+let {SinglyLinkedList} = require('../week5/singlyllist');
 
 class SinglyLinkedList2 extends SinglyLinkedList{
     constructor(){

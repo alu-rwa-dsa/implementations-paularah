@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * static file imports from question 2

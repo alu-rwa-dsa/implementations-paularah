@@ -140,4 +140,4 @@ const test = () =>{
 }
 
 
-module.export = {SinglyLinkedList, Node};
+module.exports = {SinglyLinkedList:SinglyLinkedList, Node:Node};
